@@ -1,0 +1,79 @@
+[
+  {
+    "id": "portakal",
+    "label": "Portakal",
+    "color": "#ffffff",
+    "bg_color": "#a8a8a8",
+    "icon": "portakal.png"
+  },
+  {
+    "id": "baron",
+    "label": "Baron",
+    "color": "#ffffff",
+    "bg_color": "#ffb078",
+    "icon": "portakal.png"
+  },
+  {
+    "id": "kont",
+    "label": "Kont",
+    "color": "#ffffff",
+    "bg_color": "#f08a46",
+    "icon": "portakal.png"
+  },
+  {
+    "id": "markiz",
+    "label": "Markiz",
+    "color": "#ffffff",
+    "bg_color": "#e36414",
+    "icon": "portakal.png"
+  },
+  {
+    "id": "portakal_plus",
+    "label": "Portakal+",
+    "color": "#ffffff",
+    "bg_color": "#fc6100",
+    "icon": "portakal.png"
+  },
+  {
+    "id": "stajyer_destek",
+    "label": "Stajyer Destek",
+    "color": "#ffffff",
+    "bg_color": "#fa78c2",
+    "icon": "portakal.png"
+  },
+  {
+    "id": "destek",
+    "label": "Destek",
+    "color": "#ffffff",
+    "bg_color": "#fa57b4",
+    "icon": "portakal.png"
+  },
+  {
+    "id": "proje_yapimci",
+    "label": "Proje Yapımcı",
+    "color": "#ffffff",
+    "bg_color": "#71368a",
+    "icon": "portakal.png"
+  },
+  {
+    "id": "proje_gelistirici",
+    "label": "Proje Geliştirici",
+    "color": "#ffffff",
+    "bg_color": "#9b59b6",
+    "icon": "portakal.png"
+  },
+  {
+    "id": "proje_yonetici",
+    "label": "Proje Yönetici",
+    "color": "#ffffff",
+    "bg_color": "#8c4ca5",
+    "icon": "portakal.png"
+  },
+  {
+    "id": "emektar",
+    "label": "Emektar",
+    "color": "#ffffff",
+    "bg_color": "#009689",
+    "icon": "portakal.png"
+  }
+]

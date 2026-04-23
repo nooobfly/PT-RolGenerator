@@ -1,0 +1,14 @@
+build/
+out/
+target/
+*.class
+.gradle/
+.idea/
+*.iml
+*.iws
+*.ipr
+.DS_Store
+Thumbs.db
+.windsurf/
+.env
+*.jar
