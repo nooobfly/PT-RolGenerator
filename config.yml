@@ -1,0 +1,142 @@
+info:
+  namespace: portakalrutbeler
+
+font_images:
+  portakalkabuk:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/portakalkabuk.png"
+    scale_ratio: 10
+    y_position: 8
+  portakal_ikon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/portakal_ikon.png"
+    scale_ratio: 9
+    y_position: 8
+  portakal:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/portakal.png"
+    scale_ratio: 9
+    y_position: 8
+  baron_ikon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/baron_ikon.png"
+    scale_ratio: 9
+    y_position: 8
+  baron:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/baron.png"
+    scale_ratio: 9
+    y_position: 8
+  kont_ikon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/kont_ikon.png"
+    scale_ratio: 9
+    y_position: 8
+  kont:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/kont.png"
+    scale_ratio: 9
+    y_position: 8
+  markiz_ikon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/markiz_ikon.png"
+    scale_ratio: 9
+    y_position: 8
+  markiz:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/markiz.png"
+    scale_ratio: 9
+    y_position: 8
+  portakal_plus_ikon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/portakal_plus_ikon.png"
+    scale_ratio: 9
+    y_position: 8
+  portakal_plus:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/portakal_plus.png"
+    scale_ratio: 9
+    y_position: 8
+  stajyer_destek_ikon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/stajyer_destek_ikon.png"
+    scale_ratio: 9
+    y_position: 8
+  stajyer_destek:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/stajyer_destek.png"
+    scale_ratio: 9
+    y_position: 8
+  destek_ikon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/destek_ikon.png"
+    scale_ratio: 9
+    y_position: 8
+  destek:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/destek.png"
+    scale_ratio: 9
+    y_position: 8
+  proje_yapimci_ikon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/proje_yapimci_ikon.png"
+    scale_ratio: 9
+    y_position: 8
+  proje_yapimci:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/proje_yapimci.png"
+    scale_ratio: 9
+    y_position: 8
+  proje_gelistirici_ikon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/proje_gelistirici_ikon.png"
+    scale_ratio: 9
+    y_position: 8
+  proje_gelistirici:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/proje_gelistirici.png"
+    scale_ratio: 9
+    y_position: 8
+  proje_yonetici_ikon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/proje_yonetici_ikon.png"
+    scale_ratio: 9
+    y_position: 8
+  proje_yonetici:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/proje_yonetici.png"
+    scale_ratio: 9
+    y_position: 8
+  emektar_ikon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/emektar_ikon.png"
+    scale_ratio: 9
+    y_position: 8
+  emektar:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/emektar.png"
+    scale_ratio: 9
+    y_position: 8
