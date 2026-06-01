@@ -8,16 +8,16 @@ font_images:
     path: "font/portakalkabuk.png"
     scale_ratio: 10
     y_position: 8
-  portakal_ikon:
+  Oyuncu_ikon:
     permission: "portakalhub.admin.ranksitemsadder"
     show_in_gui: true
-    path: "font/portakal_ikon.png"
+    path: "font/Oyuncu_ikon.png"
     scale_ratio: 9
     y_position: 8
-  portakal:
+  Oyuncu:
     permission: "portakalhub.admin.ranksitemsadder"
     show_in_gui: true
-    path: "font/portakal.png"
+    path: "font/Oyuncu.png"
     scale_ratio: 9
     y_position: 8
   baron_ikon:

@@ -1,9 +1,9 @@
 [
   {
-    "id": "portakal",
-    "label": "Portakal",
+    "id": "Oyuncu",
+    "label": "Oyuncu",
     "color": "#ffffff",
-    "bg_color": "#a8a8a8",
+    "bg_color": "#FFBC8C",
     "icon": "portakal.png"
   },
   {
