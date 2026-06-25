@@ -49,22 +49,29 @@
     "icon": "portakal.png"
   },
   {
+    "id": "moderator",
+    "label": "Moderatör",
+    "color": "#ffffff",
+    "bg_color": "#BB372F",
+    "icon": "portakal.png"
+  },
+  {
     "id": "proje_yapimci",
-    "label": "Proje Yapımcı",
+    "label": "Yapımcı",
     "color": "#ffffff",
     "bg_color": "#71368a",
     "icon": "portakal.png"
   },
   {
     "id": "proje_gelistirici",
-    "label": "Proje Geliştirici",
+    "label": "Geliştirici",
     "color": "#ffffff",
     "bg_color": "#9b59b6",
     "icon": "portakal.png"
   },
   {
     "id": "proje_yonetici",
-    "label": "Proje Yönetici",
+    "label": "Yönetici",
     "color": "#ffffff",
     "bg_color": "#8c4ca5",
     "icon": "portakal.png"

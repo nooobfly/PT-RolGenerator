@@ -92,6 +92,18 @@ font_images:
     path: "font/destek.png"
     scale_ratio: 9
     y_position: 8
+  moderator_ikon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/moderator_ikon.png"
+    scale_ratio: 9
+    y_position: 8
+  moderator:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/moderator.png"
+    scale_ratio: 9
+    y_position: 8
   proje_yapimci_ikon:
     permission: "portakalhub.admin.ranksitemsadder"
     show_in_gui: true
