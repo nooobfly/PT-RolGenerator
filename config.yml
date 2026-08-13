@@ -8,16 +8,16 @@ font_images:
     path: "font/portakalkabuk.png"
     scale_ratio: 10
     y_position: 8
-  Oyuncu_ikon:
+  oyuncu_ikon:
     permission: "portakalhub.admin.ranksitemsadder"
     show_in_gui: true
-    path: "font/Oyuncu_ikon.png"
+    path: "font/oyuncu_ikon.png"
     scale_ratio: 9
     y_position: 8
-  Oyuncu:
+  oyuncu:
     permission: "portakalhub.admin.ranksitemsadder"
     show_in_gui: true
-    path: "font/Oyuncu.png"
+    path: "font/oyuncu.png"
     scale_ratio: 9
     y_position: 8
   baron_ikon:
@@ -150,5 +150,305 @@ font_images:
     permission: "portakalhub.admin.ranksitemsadder"
     show_in_gui: true
     path: "font/emektar.png"
+    scale_ratio: 9
+    y_position: 8
+  gocebe_ikon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/gocebe_ikon.png"
+    scale_ratio: 9
+    y_position: 8
+  gocebe:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/gocebe.png"
+    scale_ratio: 9
+    y_position: 8
+  caylak_ikon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/caylak_ikon.png"
+    scale_ratio: 9
+    y_position: 8
+  caylak:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/caylak.png"
+    scale_ratio: 9
+    y_position: 8
+  kalfa_ikon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/kalfa_ikon.png"
+    scale_ratio: 9
+    y_position: 8
+  kalfa:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/kalfa.png"
+    scale_ratio: 9
+    y_position: 8
+  tecrubeli_ikon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/tecrubeli_ikon.png"
+    scale_ratio: 9
+    y_position: 8
+  tecrubeli:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/tecrubeli.png"
+    scale_ratio: 9
+    y_position: 8
+  bekci_ikon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/bekci_ikon.png"
+    scale_ratio: 9
+    y_position: 8
+  bekci:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/bekci.png"
+    scale_ratio: 9
+    y_position: 8
+  muhafiz_ikon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/muhafiz_ikon.png"
+    scale_ratio: 9
+    y_position: 8
+  muhafiz:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/muhafiz.png"
+    scale_ratio: 9
+    y_position: 8
+  seyyah_ikon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/seyyah_ikon.png"
+    scale_ratio: 9
+    y_position: 8
+  seyyah:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/seyyah.png"
+    scale_ratio: 9
+    y_position: 8
+  asker_ikon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/asker_ikon.png"
+    scale_ratio: 9
+    y_position: 8
+  asker:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/asker.png"
+    scale_ratio: 9
+    y_position: 8
+  akinci_ikon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/akinci_ikon.png"
+    scale_ratio: 9
+    y_position: 8
+  akinci:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/akinci.png"
+    scale_ratio: 9
+    y_position: 8
+  savasci_ikon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/savasci_ikon.png"
+    scale_ratio: 9
+    y_position: 8
+  savasci:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/savasci.png"
+    scale_ratio: 9
+    y_position: 8
+  gladyator_ikon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/gladyator_ikon.png"
+    scale_ratio: 9
+    y_position: 8
+  gladyator:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/gladyator.png"
+    scale_ratio: 9
+    y_position: 8
+  suvari_ikon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/suvari_ikon.png"
+    scale_ratio: 9
+    y_position: 8
+  suvari:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/suvari.png"
+    scale_ratio: 9
+    y_position: 8
+  sipahi_ikon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/sipahi_ikon.png"
+    scale_ratio: 9
+    y_position: 8
+  sipahi:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/sipahi.png"
+    scale_ratio: 9
+    y_position: 8
+  lejyoner_ikon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/lejyoner_ikon.png"
+    scale_ratio: 9
+    y_position: 8
+  lejyoner:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/lejyoner.png"
+    scale_ratio: 9
+    y_position: 8
+  sovalye_ikon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/sovalye_ikon.png"
+    scale_ratio: 9
+    y_position: 8
+  sovalye:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/sovalye.png"
+    scale_ratio: 9
+    y_position: 8
+  alim_ikon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/alim_ikon.png"
+    scale_ratio: 9
+    y_position: 8
+  alim:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/alim.png"
+    scale_ratio: 9
+    y_position: 8
+  kahin_ikon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/kahin_ikon.png"
+    scale_ratio: 9
+    y_position: 8
+  kahin:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/kahin.png"
+    scale_ratio: 9
+    y_position: 8
+  kadim_ikon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/kadim_ikon.png"
+    scale_ratio: 9
+    y_position: 8
+  kadim:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/kadim.png"
+    scale_ratio: 9
+    y_position: 8
+  sampiyon_ikon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/sampiyon_ikon.png"
+    scale_ratio: 9
+    y_position: 8
+  sampiyon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/sampiyon.png"
+    scale_ratio: 9
+    y_position: 8
+  tarkan_ikon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/tarkan_ikon.png"
+    scale_ratio: 9
+    y_position: 8
+  tarkan:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/tarkan.png"
+    scale_ratio: 9
+    y_position: 8
+  ustat_ikon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/ustat_ikon.png"
+    scale_ratio: 9
+    y_position: 8
+  ustat:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/ustat.png"
+    scale_ratio: 9
+    y_position: 8
+  asil_ikon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/asil_ikon.png"
+    scale_ratio: 9
+    y_position: 8
+  asil:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/asil.png"
+    scale_ratio: 9
+    y_position: 8
+  lord_ikon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/lord_ikon.png"
+    scale_ratio: 9
+    y_position: 8
+  lord:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/lord.png"
+    scale_ratio: 9
+    y_position: 8
+  fatih_ikon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/fatih_ikon.png"
+    scale_ratio: 9
+    y_position: 8
+  fatih:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/fatih.png"
+    scale_ratio: 9
+    y_position: 8
+  yuce_ikon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/yuce_ikon.png"
+    scale_ratio: 9
+    y_position: 8
+  yuce:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/yuce.png"
     scale_ratio: 9
     y_position: 8

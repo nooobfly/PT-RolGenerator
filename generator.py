@@ -173,9 +173,8 @@ def build_tag_img(label: str, text_color, font, bg_color=None) -> Image.Image:
 
     text_x = H_PADDING
     usable_h = BADGE_HEIGHT - shadow_h
-    ref_bbox = tmp_draw.textbbox((0, 0), "H", font=font)
-    ref_h = ref_bbox[3] - ref_bbox[1]
-    text_y = (usable_h - ref_h) // 2 - ref_bbox[1]
+    text_h = bbox[3] - bbox[1]
+    text_y = (usable_h - text_h) // 2
     draw_pixel_text(draw, label, font, text_x + 2, text_y, (0, 0, 0, 255))
     draw_pixel_text(draw, label, font, text_x, text_y, (*text_color, 255))
     return tag
