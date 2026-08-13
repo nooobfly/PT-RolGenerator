@@ -1,6 +1,6 @@
 [
   {
-    "id": "Oyuncu",
+    "id": "oyuncu",
     "label": "Oyuncu",
     "color": "#ffffff",
     "bg_color": "#FFBC8C",
@@ -81,6 +81,181 @@
     "label": "Emektar",
     "color": "#ffffff",
     "bg_color": "#009689",
+    "icon": "portakal.png"
+  },
+  {
+    "id": "gocebe",
+    "label": "Göçebe",
+    "color": "#ffffff",
+    "bg_color": "#cba176",
+    "icon": "portakal.png"
+  },
+  {
+    "id": "caylak",
+    "label": "Çaylak",
+    "color": "#ffffff",
+    "bg_color": "#c2b668",
+    "icon": "portakal.png"
+  },
+  {
+    "id": "kalfa",
+    "label": "Kalfa",
+    "color": "#ffffff",
+    "bg_color": "#a3b95b",
+    "icon": "portakal.png"
+  },
+  {
+    "id": "tecrubeli",
+    "label": "Tecrübeli",
+    "color": "#ffffff",
+    "bg_color": "#76af4f",
+    "icon": "portakal.png"
+  },
+  {
+    "id": "bekci",
+    "label": "Bekçi",
+    "color": "#ffffff",
+    "bg_color": "#4e9d4b",
+    "icon": "portakal.png"
+  },
+  {
+    "id": "muhafiz",
+    "label": "Muhafız",
+    "color": "#ffffff",
+    "bg_color": "#468c5d",
+    "icon": "portakal.png"
+  },
+  {
+    "id": "seyyah",
+    "label": "Seyyah",
+    "color": "#ffffff",
+    "bg_color": "#38926a",
+    "icon": "portakal.png"
+  },
+  {
+    "id": "asker",
+    "label": "Asker",
+    "color": "#ffffff",
+    "bg_color": "#2d9779",
+    "icon": "portakal.png"
+  },
+  {
+    "id": "akinci",
+    "label": "Akıncı",
+    "color": "#ffffff",
+    "bg_color": "#239c89",
+    "icon": "portakal.png"
+  },
+  {
+    "id": "savasci",
+    "label": "Savaşçı",
+    "color": "#ffffff",
+    "bg_color": "#1f9aa0",
+    "icon": "portakal.png"
+  },
+  {
+    "id": "gladyator",
+    "label": "Gladyatör",
+    "color": "#ffffff",
+    "bg_color": "#1e93bb",
+    "icon": "portakal.png"
+  },
+  {
+    "id": "suvari",
+    "label": "Süvari",
+    "color": "#ffffff",
+    "bg_color": "#1e8cd7",
+    "icon": "portakal.png"
+  },
+  {
+    "id": "sipahi",
+    "label": "Sipahi",
+    "color": "#ffffff",
+    "bg_color": "#237bd9",
+    "icon": "portakal.png"
+  },
+  {
+    "id": "lejyoner",
+    "label": "Lejyoner",
+    "color": "#ffffff",
+    "bg_color": "#2f61c1",
+    "icon": "portakal.png"
+  },
+  {
+    "id": "sovalye",
+    "label": "Şövalye",
+    "color": "#ffffff",
+    "bg_color": "#3b48ab",
+    "icon": "portakal.png"
+  },
+  {
+    "id": "alim",
+    "label": "Alim",
+    "color": "#ffffff",
+    "bg_color": "#5736a7",
+    "icon": "portakal.png"
+  },
+  {
+    "id": "kahin",
+    "label": "Kâhin",
+    "color": "#ffffff",
+    "bg_color": "#7225a3",
+    "icon": "portakal.png"
+  },
+  {
+    "id": "kadim",
+    "label": "Kadim",
+    "color": "#ffffff",
+    "bg_color": "#8f1d8e",
+    "icon": "portakal.png"
+  },
+  {
+    "id": "sampiyon",
+    "label": "Şampiyon",
+    "color": "#ffffff",
+    "bg_color": "#ad1a70",
+    "icon": "portakal.png"
+  },
+  {
+    "id": "tarkan",
+    "label": "Tarkan",
+    "color": "#ffffff",
+    "bg_color": "#c41b55",
+    "icon": "portakal.png"
+  },
+  {
+    "id": "ustat",
+    "label": "Üstat",
+    "color": "#ffffff",
+    "bg_color": "#cd273e",
+    "icon": "portakal.png"
+  },
+  {
+    "id": "asil",
+    "label": "Asil",
+    "color": "#ffffff",
+    "bg_color": "#da362b",
+    "icon": "portakal.png"
+  },
+  {
+    "id": "lord",
+    "label": "Lord",
+    "color": "#ffffff",
+    "bg_color": "#ee4b21",
+    "icon": "portakal.png"
+  },
+  {
+    "id": "fatih",
+    "label": "Fatih",
+    "color": "#ffffff",
+    "bg_color": "#f88712",
+    "icon": "portakal.png"
+  },
+  {
+    "id": "yuce",
+    "label": "Yüce",
+    "color": "#ffffff",
+    "bg_color": "#ffd700",
     "icon": "portakal.png"
   }
 ]
