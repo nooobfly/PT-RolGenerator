@@ -32,6 +32,18 @@ font_images:
     path: "font/baron.png"
     scale_ratio: 9
     y_position: 8
+  emektar_ikon:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/emektar_ikon.png"
+    scale_ratio: 9
+    y_position: 8
+  emektar:
+    permission: "portakalhub.admin.ranksitemsadder"
+    show_in_gui: true
+    path: "font/emektar.png"
+    scale_ratio: 9
+    y_position: 8
   kont_ikon:
     permission: "portakalhub.admin.ranksitemsadder"
     show_in_gui: true
@@ -138,18 +150,6 @@ font_images:
     permission: "portakalhub.admin.ranksitemsadder"
     show_in_gui: true
     path: "font/proje_yonetici.png"
-    scale_ratio: 9
-    y_position: 8
-  emektar_ikon:
-    permission: "portakalhub.admin.ranksitemsadder"
-    show_in_gui: true
-    path: "font/emektar_ikon.png"
-    scale_ratio: 9
-    y_position: 8
-  emektar:
-    permission: "portakalhub.admin.ranksitemsadder"
-    show_in_gui: true
-    path: "font/emektar.png"
     scale_ratio: 9
     y_position: 8
   gocebe_ikon:
