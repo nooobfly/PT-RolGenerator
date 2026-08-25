@@ -14,6 +14,13 @@
     "icon": "portakal.png"
   },
   {
+    "id": "emektar",
+    "label": "Emektar",
+    "color": "#ffffff",
+    "bg_color": "#10786E",
+    "icon": "portakal.png"
+  },
+  {
     "id": "kont",
     "label": "Kont",
     "color": "#ffffff",
@@ -74,13 +81,6 @@
     "label": "Yönetici",
     "color": "#ffffff",
     "bg_color": "#8c4ca5",
-    "icon": "portakal.png"
-  },
-  {
-    "id": "emektar",
-    "label": "Emektar",
-    "color": "#ffffff",
-    "bg_color": "#009689",
     "icon": "portakal.png"
   },
   {
