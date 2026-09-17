@@ -2,7 +2,7 @@ import json
 import os
 import xml.etree.ElementTree as ET
 from pathlib import Path
-from PIL import Image, ImageDraw, ImageFilter, ImageFont
+from PIL import Image, ImageDraw, ImageChops, ImageFont
 
 BADGE_HEIGHT  = 32
 ICON_SIZE     = 32
@@ -10,6 +10,10 @@ H_PADDING     = 8
 CORNER_RADIUS = 8
 ICON_BG_COLOR = (55, 57, 63)
 BG_COLOR      = (45, 45, 50)
+ICON_TAG_GAP  = 2
+
+GLOSS_SPACING = 34
+GLOSS_PHASE   = GLOSS_SPACING // 2
 
 HIGHLIGHT     = (80, 82, 90, 200)
 SHADOW_INNER  = (10, 10, 12, 220)
@@ -59,6 +63,23 @@ def load_font(size: int = 11):
     return ImageFont.load_default()
 
 
+def draw_pixel_text(draw, text, font, x, y, color):
+    mask = font.getmask(text)
+    w, h = mask.size
+    for py in range(h):
+        for px in range(w):
+            if mask.getpixel((px, py)) > 128:
+                draw.point((x + px, y + py), fill=color)
+
+
+def crisp_alpha(img: Image.Image, threshold: int = 160) -> Image.Image:
+    r, g, b, a = img.split()
+    a = a.point(lambda v: 255 if v >= threshold else 0)
+    img = img.copy()
+    img.putalpha(a)
+    return img
+
+
 def hex_to_rgb(hex_color: str):
     h = hex_color.lstrip("#")
     return tuple(int(h[i:i+2], 16) for i in (0, 2, 4))
@@ -91,35 +112,36 @@ def add_drop_shadow(img: Image.Image, offset: int, blur: int, color) -> Image.Im
     return canvas
 
 
-def draw_pixel_text(draw, text, font, x, y, color):
-    mask = font.getmask(text)
-    w, h = mask.size
-    for py in range(h):
-        for px in range(w):
-            if mask.getpixel((px, py)) > 128:
-                draw.point((x + px, y + py), fill=color)
+def apply_diagonal_gloss(canvas: Image.Image, shape_mask: Image.Image,
+                          band_w=4, skew_ratio=0.7, alpha=90,
+                          spacing_px=GLOSS_SPACING, phase=GLOSS_PHASE, origin_x=0):
+    w, h = canvas.size
+    skew = int(h * skew_ratio)
 
+    gloss_mask = Image.new("L", (w, h), 0)
+    gloss_draw = ImageDraw.Draw(gloss_mask)
 
-def draw_outlined_text(draw, text, font, x, y, color, outline=(0, 0, 0, 255)):
-    for dx in (-1, 0, 1):
-        for dy in (-1, 0, 1):
-            if dx == 0 and dy == 0:
-                continue
-            draw_pixel_text(draw, text, font, x + dx, y + dy, outline)
-    draw_pixel_text(draw, text, font, x, y, color)
+    first_k = (origin_x - skew - band_w - phase) // spacing_px
+    last_k  = (origin_x + w - phase) // spacing_px + 1
+    k = int(first_k)
+    while k <= last_k:
+        global_x = k * spacing_px + phase
+        band_x = global_x - origin_x - band_w // 2
+        gloss_draw.polygon(
+            [
+                (band_x + skew, 0),
+                (band_x + skew + band_w, 0),
+                (band_x + band_w, h - 1),
+                (band_x, h - 1),
+            ],
+            fill=alpha,
+        )
+        k += 1
 
-
-def apply_3d_tag(base: Image.Image) -> Image.Image:
-    return base
-
-
-def apply_3d_icon(icon: Image.Image) -> Image.Image:
-    result = icon.copy()
-    draw = ImageDraw.Draw(result, "RGBA")
-    w, h = result.size
-    draw.line([(1, 1), (w - 2, 1)], fill=(255, 255, 255, 60), width=1)
-    draw.line([(1, h - 2), (w - 2, h - 2)], fill=(0, 0, 0, 80), width=1)
-    return result
+    gloss_mask = ImageChops.multiply(gloss_mask, shape_mask)
+    gloss_layer = Image.new("RGBA", (w, h), (255, 255, 255, 255))
+    canvas.paste(gloss_layer, (0, 0), gloss_mask)
+    return canvas
 
 
 def build_icon_img(icon_path: Path, bg_color=None) -> Image.Image:
@@ -137,6 +159,9 @@ def build_icon_img(icon_path: Path, bg_color=None) -> Image.Image:
     shadow_w = max(2, ICON_SIZE // 12)
     draw.rectangle([ICON_SIZE - shadow_w, 0, ICON_SIZE - 1, ICON_SIZE - 1], fill=(*dark, 255))
 
+    full_mask = Image.new("L", (ICON_SIZE, ICON_SIZE), 255)
+    apply_diagonal_gloss(canvas, full_mask, band_w=3, origin_x=0)
+
     bg_shadowed = canvas
 
     pad = 4
@@ -144,7 +169,9 @@ def build_icon_img(icon_path: Path, bg_color=None) -> Image.Image:
     if icon_path.suffix.lower() == ".svg":
         icon = load_svg_as_image(icon_path, inner)
     else:
-        icon = Image.open(icon_path).convert("RGBA").resize((inner, inner), Image.NEAREST)
+        icon = Image.open(icon_path).convert("RGBA")
+        icon = crisp_alpha(icon)
+        icon = icon.resize((inner, inner), Image.NEAREST)
     usable_h = ICON_SIZE - shadow_h
     icon_x = (ICON_SIZE - inner) // 2
     icon_y = (usable_h - inner) // 2
@@ -152,29 +179,42 @@ def build_icon_img(icon_path: Path, bg_color=None) -> Image.Image:
     return bg_shadowed
 
 
-def build_tag_img(label: str, text_color, font, bg_color=None) -> Image.Image:
+def build_tag_img(label: str, text_color, font, bg_color=None, origin_x=None) -> Image.Image:
     tmp_draw = ImageDraw.Draw(Image.new("RGBA", (1, 1)))
-    bbox  = tmp_draw.textbbox((0, 0), label, font=font)
+    bbox = tmp_draw.textbbox((0, 0), label, font=font)
     text_w = bbox[2] - bbox[0]
 
     width  = H_PADDING + text_w + H_PADDING
-    tag    = Image.new("RGBA", (width, BADGE_HEIGHT), (0, 0, 0, 0))
-    draw   = ImageDraw.Draw(tag)
-
+    radius = 3
     bg = bg_color if bg_color else BG_COLOR
-    draw.rectangle([0, 0, width - 1, BADGE_HEIGHT - 1], fill=(*bg, 255))
+    dark = tuple(max(0, c - 100) for c in bg)
+
+    shape_mask = Image.new("L", (width, BADGE_HEIGHT), 0)
+    ImageDraw.Draw(shape_mask).rounded_rectangle(
+        [0, 0, width - 1, BADGE_HEIGHT - 1], radius=radius, fill=255
+    )
 
     shadow_h = max(3, BADGE_HEIGHT // 8)
-    dark = tuple(max(0, c - 100) for c in bg)
-    draw.rectangle([0, BADGE_HEIGHT - shadow_h, width - 1, BADGE_HEIGHT - 1], fill=(*dark, 255))
+    band_mask = Image.new("L", (width, BADGE_HEIGHT), 0)
+    ImageDraw.Draw(band_mask).rectangle(
+        [0, BADGE_HEIGHT - shadow_h, width - 1, BADGE_HEIGHT - 1], fill=255
+    )
+    dark_mask = ImageChops.multiply(shape_mask, band_mask)
 
-    shadow_w = max(2, BADGE_HEIGHT // 12)
-    draw.rectangle([width - shadow_w, 0, width - 1, BADGE_HEIGHT - 1], fill=(*dark, 255))
+    tag = Image.new("RGBA", (width, BADGE_HEIGHT), (0, 0, 0, 0))
+    bg_layer = Image.new("RGBA", (width, BADGE_HEIGHT), (*bg, 255))
+    tag.paste(bg_layer, (0, 0), shape_mask)
+    dark_layer = Image.new("RGBA", (width, BADGE_HEIGHT), (*dark, 255))
+    tag.paste(dark_layer, (0, 0), dark_mask)
+
+    tag_origin_x = origin_x if origin_x is not None else (ICON_SIZE + ICON_TAG_GAP)
+    apply_diagonal_gloss(tag, shape_mask, band_w=4, origin_x=tag_origin_x)
 
     text_x = H_PADDING
     usable_h = BADGE_HEIGHT - shadow_h
     text_h = bbox[3] - bbox[1]
     text_y = (usable_h - text_h) // 2
+    draw = ImageDraw.Draw(tag)
     draw_pixel_text(draw, label, font, text_x + 2, text_y, (0, 0, 0, 255))
     draw_pixel_text(draw, label, font, text_x, text_y, (*text_color, 255))
     return tag
@@ -196,20 +236,18 @@ def generate_role(role: dict):
         icon_img.save(out_icon, "PNG")
         print(f"[icon] {out_icon}")
 
-    tag_img = build_tag_img(label, text_color, font, bg_color)
+    tag_origin_x = (ICON_SIZE + ICON_TAG_GAP) if has_icon else 0
+    tag_img = build_tag_img(label, text_color, font, bg_color, origin_x=tag_origin_x)
     out_tag = OUTPUT_DIR / f"{rid}.png"
     tag_img.save(out_tag, "PNG")
     print(f"[tag ] {out_tag}")
 
     if has_icon:
-        icon_img2 = build_icon_img(icon_path, bg_color)
-        tag_img2  = build_tag_img(label, text_color, font, bg_color)
-        gap    = 2
-        full_w = icon_img2.width + gap + tag_img2.width
-        full_h = max(icon_img2.height, tag_img2.height)
+        full_w = icon_img.width + ICON_TAG_GAP + tag_img.width
+        full_h = max(icon_img.height, tag_img.height)
         combined = Image.new("RGBA", (full_w, full_h), (0, 0, 0, 0))
-        combined.paste(icon_img2, (0, 0), icon_img2)
-        combined.paste(tag_img2, (icon_img2.width + gap, 0), tag_img2)
+        combined.paste(icon_img, (0, 0), icon_img)
+        combined.paste(tag_img, (icon_img.width + ICON_TAG_GAP, 0), tag_img)
 
         out_full = FULL_DIR / f"{rid}_full.png"
         combined.save(out_full, "PNG")
