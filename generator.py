@@ -1,5 +1,4 @@
 import json
-import os
 import xml.etree.ElementTree as ET
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageChops, ImageFont
@@ -7,25 +6,19 @@ from PIL import Image, ImageDraw, ImageChops, ImageFont
 BADGE_HEIGHT  = 32
 ICON_SIZE     = 32
 H_PADDING     = 8
-CORNER_RADIUS = 8
 ICON_BG_COLOR = (55, 57, 63)
 BG_COLOR      = (45, 45, 50)
+FONT_SIZE     = 22
 ICON_TAG_GAP  = 2
+# parıltı şeritleri ikon ve rozette aynı global desene göre çizilir
 
 GLOSS_SPACING = 34
 GLOSS_PHASE   = GLOSS_SPACING // 2
 
-HIGHLIGHT     = (80, 82, 90, 200)
-SHADOW_INNER  = (10, 10, 12, 220)
-DROP_OFFSET   = 2
-DROP_BLUR     = 0
-DROP_COLOR    = (0, 0, 0, 220)
-
-OUTPUT_DIR = Path("output")
-OUTPUT_DIR.mkdir(exist_ok=True)
-FULL_DIR = Path("FullOutput")
-FULL_DIR.mkdir(exist_ok=True)
-SCRIPT_DIR = Path(__file__).parent
+SCRIPT_DIR = Path(__file__).resolve().parent
+OUTPUT_DIR = SCRIPT_DIR / "output"
+FULL_DIR = SCRIPT_DIR / "FullOutput"
+FONT_PATH = SCRIPT_DIR / "ari.ttf"
 
 
 def load_svg_as_image(svg_path: Path, size: int) -> Image.Image:
@@ -45,7 +38,9 @@ def load_svg_as_image(svg_path: Path, size: int) -> Image.Image:
         w = int(float(rect.get("width", 1))) * scale
         h = int(float(rect.get("height", 1))) * scale
         fill = rect.get("fill", "#000000")
-        r, g, b = int(fill[1:3], 16), int(fill[3:5], 16), int(fill[5:7], 16)
+        if fill == "none":
+            continue
+        r, g, b = hex_to_rgb(fill)
         draw.rectangle([x, y, x + w - 1, y + h - 1], fill=(r, g, b, 255))
 
     if img.width != size or img.height != size:
@@ -53,16 +48,13 @@ def load_svg_as_image(svg_path: Path, size: int) -> Image.Image:
     return img
 
 
-def load_font(size: int = 11):
-    candidates = [
-        "ari.ttf",
-    ]
-    for path in candidates:
-        if os.path.exists(path):
-            return ImageFont.truetype(path, size)
-    return ImageFont.load_default()
+def load_font(size: int = FONT_SIZE):
+    if not FONT_PATH.exists():
+        raise FileNotFoundError(f"Font bulunamadi: {FONT_PATH}")
+    return ImageFont.truetype(str(FONT_PATH), size)
 
 
+# anti-alias olmadan piksel piksel yazı çizer
 def draw_pixel_text(draw, text, font, x, y, color):
     mask = font.getmask(text)
     w, h = mask.size
@@ -72,6 +64,7 @@ def draw_pixel_text(draw, text, font, x, y, color):
                 draw.point((x + px, y + py), fill=color)
 
 
+# kaynak png'deki yumuşak gölgeyi keser, kenarlar keskin kalır
 def crisp_alpha(img: Image.Image, threshold: int = 160) -> Image.Image:
     r, g, b, a = img.split()
     a = a.point(lambda v: 255 if v >= threshold else 0)
@@ -82,36 +75,12 @@ def crisp_alpha(img: Image.Image, threshold: int = 160) -> Image.Image:
 
 def hex_to_rgb(hex_color: str):
     h = hex_color.lstrip("#")
+    if len(h) == 3:
+        h = "".join(c * 2 for c in h)
     return tuple(int(h[i:i+2], 16) for i in (0, 2, 4))
 
 
-def draw_rounded_rect(draw, xy, radius, fill):
-    x0, y0, x1, y1 = xy
-    draw.rectangle([x0 + radius, y0, x1 - radius, y1], fill=fill)
-    draw.rectangle([x0, y0 + radius, x1, y1 - radius], fill=fill)
-    for cx, cy in [(x0, y0), (x1 - radius*2, y0),
-                   (x0, y1 - radius*2), (x1 - radius*2, y1 - radius*2)]:
-        draw.ellipse([cx, cy, cx + radius*2, cy + radius*2], fill=fill)
-
-
-def add_drop_shadow(img: Image.Image, offset: int, blur: int, color) -> Image.Image:
-    w, h = img.size
-    canvas_h = h + offset
-    canvas = Image.new("RGBA", (w, canvas_h), (0, 0, 0, 0))
-
-    shadow = Image.new("RGBA", (w, canvas_h), (0, 0, 0, 0))
-    mask = img.split()[3]
-    colored = Image.new("RGBA", (w, h), color)
-    colored.putalpha(mask)
-    shadow.paste(colored, (0, offset))
-
-    canvas = Image.alpha_composite(canvas, shadow)
-    fg = Image.new("RGBA", (w, canvas_h), (0, 0, 0, 0))
-    fg.paste(img, (0, 0))
-    canvas = Image.alpha_composite(canvas, fg)
-    return canvas
-
-
+# ikon ve rozette aynı çapraz parıltı deseni, yan yana gelince şeritler kopmasın
 def apply_diagonal_gloss(canvas: Image.Image, shape_mask: Image.Image,
                           band_w=4, skew_ratio=0.7, alpha=90,
                           spacing_px=GLOSS_SPACING, phase=GLOSS_PHASE, origin_x=0):
@@ -220,15 +189,16 @@ def build_tag_img(label: str, text_color, font, bg_color=None, origin_x=None) ->
     return tag
 
 
+# bir rol için ikon, rozet ve yan yana önizleme png'lerini üretir
 def generate_role(role: dict):
     rid        = role["id"]
     label      = role["label"]
     text_color = hex_to_rgb(role["color"])
     bg_color   = hex_to_rgb(role["bg_color"]) if "bg_color" in role else None
-    icon_path  = SCRIPT_DIR / role.get("icon", "")
-    font       = load_font(22)
+    icon_path  = SCRIPT_DIR / role["icon"] if role.get("icon") else None
+    font       = load_font()
 
-    has_icon = icon_path.exists()
+    has_icon = icon_path is not None and icon_path.is_file()
 
     if has_icon:
         icon_img = build_icon_img(icon_path, bg_color)
@@ -269,22 +239,22 @@ def generate_config(roles: list):
 
     for role in roles:
         rid = role["id"]
-        has_icon = (SCRIPT_DIR / role.get("icon", "")).exists()
+        has_icon = bool(role.get("icon")) and (SCRIPT_DIR / role["icon"]).is_file()
 
         if has_icon:
             lines.append(f"  {rid}_ikon:")
-            lines.append(f'    permission: "portakalhub.admin.ranksitemsadder"')
-            lines.append(f"    show_in_gui: true")
+            lines.append('    permission: "portakalhub.admin.ranksitemsadder"')
+            lines.append("    show_in_gui: true")
             lines.append(f'    path: "font/{rid}_ikon.png"')
-            lines.append(f"    scale_ratio: 9")
-            lines.append(f"    y_position: 8")
+            lines.append("    scale_ratio: 9")
+            lines.append("    y_position: 8")
 
         lines.append(f"  {rid}:")
-        lines.append(f'    permission: "portakalhub.admin.ranksitemsadder"')
-        lines.append(f"    show_in_gui: true")
+        lines.append('    permission: "portakalhub.admin.ranksitemsadder"')
+        lines.append("    show_in_gui: true")
         lines.append(f'    path: "font/{rid}.png"')
-        lines.append(f"    scale_ratio: 9")
-        lines.append(f"    y_position: 8")
+        lines.append("    scale_ratio: 9")
+        lines.append("    y_position: 8")
 
     config_path = SCRIPT_DIR / "config.yml"
     with open(config_path, "w", encoding="utf-8") as f:
@@ -292,16 +262,37 @@ def generate_config(roles: list):
     print(f"[config] {config_path}")
 
 
+# roles.json'dan silinen rollerin eski png'lerini temizler
+def remove_stale(ids: list):
+    keep = {
+        OUTPUT_DIR: {f"{i}.png" for i in ids} | {f"{i}_ikon.png" for i in ids},
+        FULL_DIR: {f"{i}_full.png" for i in ids},
+    }
+    for folder, names in keep.items():
+        for f in folder.glob("*.png"):
+            if f.name not in names:
+                f.unlink()
+                print(f"[sil ] {f}")
+
+
 def main():
+    OUTPUT_DIR.mkdir(exist_ok=True)
+    FULL_DIR.mkdir(exist_ok=True)
     roles_file = SCRIPT_DIR / "roles.json"
     with open(roles_file, encoding="utf-8") as f:
         roles = json.load(f)
+
+    ids = [r["id"] for r in roles]
+    dup = {i for i in ids if ids.count(i) > 1}
+    if dup:
+        raise SystemExit(f"roles.json'da tekrar eden id var: {', '.join(sorted(dup))}")
 
     for role in roles:
         generate_role(role)
         print()
 
     generate_config(roles)
+    remove_stale(ids)
     print(f"Bitti -> {OUTPUT_DIR.resolve()}")
 
 

@@ -1,14 +1,5 @@
-build/
-out/
-target/
-*.class
-.gradle/
-.idea/
-*.iml
-*.iws
-*.ipr
+__pycache__/
+*.pyc
+.env
 .DS_Store
 Thumbs.db
-.windsurf/
-.env
-*.jar
