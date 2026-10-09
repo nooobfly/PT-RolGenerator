@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3)",
+      "Bash(python3 -c \"import json; json.load\\(open\\('roles.json'\\)\\)\")",
+      "Bash(python3 generator.py)",
+      "Bash(python3 -c \"import json; print\\(len\\(json.load\\(open\\('roles.json'\\)\\)\\)\\)\")",
+      "Bash(python3 -c ' *)",
+      "Bash(git rm *)",
+      "Bash(ls -la \"/home/noobfly/Desktop/Noob/Minecraft Development/PortakalRust/\" 2>&1 | head -50)",
+      "Read(//home/noobfly/Desktop/Noob/Minecraft Development/PortakalRust/**)",
+      "Bash(mvn -q -o compile)",
+      "Bash(mvn -o compile)",
+      "Bash(echo \"EXIT:$?\")",
+      "Bash(mvn -o clean compile)",
+      "Bash(mvn -o -q clean package -DskipTests)",
+      "Bash(ls -la /home/noobfly/Desktop/ | head -20)",
+      "Read(//home/noobfly/Desktop/**)",
+      "Bash(cp \"/home/noobfly/Desktop/Noob/Minecraft Development/PortakalRust/target/PortakalRust-1.0.jar\" /home/noobfly/Desktop/PortakalRust-1.0.jar && ls -la /home/noobfly/Desktop/PortakalRust-1.0.jar)"
+    ],
+    "additionalDirectories": [
+      "/home/noobfly/Desktop/Noob/Minecraft Development/PortakalRust/target"
+    ]
+  }
+}
