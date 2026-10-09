@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generator: https://ezgif.com/png-to-svg -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+<path d="M0,0 L6,0 L6,2 L8,2 L8,6 L10,6 L10,26 L5,26 L5,28 L2,28 L2,31 L-3,31 L-3,34 L-21,34 L-21,31 L-24,31 L-24,23 L-26,23 L-26,11 L-24,11 L-24,18 L-22,18 L-22,21 L-18,21 L-18,23 L-5,23 L-5,21 L0,21 L0,16 L2,16 L2,10 L5,10 L5,5 L2,5 L2,3 L0,3 Z " fill="#EB730A" transform="translate(40,17)"/>
+<path d="M0,0 L5,0 L5,5 L7,5 L7,7 L10,7 L10,12 L7,12 L7,18 L5,18 L5,23 L0,23 L0,25 L-13,25 L-13,23 L-17,23 L-17,20 L-19,20 L-19,7 L-16,7 L-16,5 L0,5 Z " fill="#F89A10" transform="translate(35,15)"/>
+<path d="M0,0 L3,0 L3,5 L5,5 L5,21 L3,21 L3,26 L0,26 L0,29 L-3,29 L-3,31 L-8,31 L-8,34 L-24,34 L-24,31 L-30,31 L-30,29 L-32,29 L-32,26 L-29,26 L-29,29 L-11,29 L-11,26 L-6,26 L-6,23 L-3,23 L-3,21 L2,21 L2,1 L0,1 Z " fill="#99340E" transform="translate(48,22)"/>
+<path d="M0,0 L6,0 L6,3 L3,3 L3,5 L1,5 L1,13 L-15,13 L-15,15 L-18,15 L-18,12 L-16,12 L-16,10 L-5,10 L-5,5 L-2,5 L-2,2 L0,2 Z " fill="#7E390A" transform="translate(34,7)"/>
+<!-- Sap ana gövdesi - koyu kahve -->
+<path d="M0,0 L3,0 L3,6 L1,6 L1,18 L3,18 L3,26 L0,26 L0,21 L-3,21 L-3,5 L0,5 Z " fill="#A63F0A" transform="translate(13,22)"/>
+<!-- Sap kısmı - teal/yeşil geçiş -->
+<path d="M0,0 L2,0 L2,3 L4,3 L4,5 L6,5 L6,7 L4,7 L4,9 L2,9 L2,11 L0,11 L0,9 L-2,9 L-2,7 L-4,7 L-4,5 L-2,5 L-2,3 L0,3 Z " fill="#2A7A5A" transform="translate(35,7)"/>
+<!-- Yaprak - koyu yeşil -->
+<path d="M0,0 L9,0 L9,3 L12,3 L12,6 L11,6 L11,11 L6,11 L6,9 L0,9 L0,6 L-2,6 L-2,3 L0,3 Z " fill="#367D33" transform="translate(18,6)"/>
+<!-- Yaprak açık yeşil detay -->
+<path d="M0,0 L3,0 L3,2 L5,2 L5,4 L3,4 L3,6 L0,6 L0,4 L-2,4 L-2,2 L0,2 Z " fill="#4A9E40" transform="translate(22,7)"/>
+<!-- Alt renk geçişi - koyu kırmızımsı turuncu -->
+<path d="M0,0 L18,0 L18,3 L21,3 L21,6 L18,6 L18,8 L15,8 L15,10 L3,10 L3,8 L0,8 L0,6 L-3,6 L-3,3 L0,3 Z " fill="#C05010" transform="translate(22,42)"/>
+<!-- Alt orta renk geçişi -->
+<path d="M0,0 L8,0 L8,2 L10,2 L10,5 L8,5 L8,7 L6,7 L6,9 L2,9 L2,7 L0,7 L0,5 L-2,5 L-2,2 L0,2 Z " fill="#D46010" transform="translate(29,46)"/>
+</svg>
